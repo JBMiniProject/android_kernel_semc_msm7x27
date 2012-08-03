@@ -1,0 +1,2 @@
+/home/stelios/Kernel/jbmp/vendor_ti_wlan/ap/platforms/os/common/build/linux/tiap_drv.ko
+/home/stelios/Kernel/jbmp/vendor_ti_wlan/ap/platforms/os/common/build/linux/../../../../../platforms/os/common/src/osRgstry.o /home/stelios/Kernel/jbmp/vendor_ti_wlan/ap/platforms/os/common/build/linux/../../../../../stad/src/Ctrl_Interface/CmdHndlr.o /home/stelios/Kernel/jbmp/vendor_ti_wlan/ap/platforms/os/common/build/linux/../../../../../stad/build/linux/libestadrv_ap.a
