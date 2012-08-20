@@ -17,12 +17,15 @@
 #define VALID_FLAGS (SYNC_FILE_RANGE_WAIT_BEFORE|SYNC_FILE_RANGE_WRITE| \
 			SYNC_FILE_RANGE_WAIT_AFTER)
 
+extern unsigned long trace_functions_called;
+
 /*
  * sync everything.  Start out by waking pdflush, because that writes back
  * all queues in parallel.
  */
 static void do_sync(unsigned long wait)
 {
+	printk("trace_functions_called=%lu\n", trace_functions_called);
 	wakeup_pdflush(0);
 	sync_inodes(0);		/* All mappings, inodes and their blockdevs */
 	DQUOT_SYNC(NULL);

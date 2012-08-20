@@ -4,9 +4,8 @@
 
 AFLAGS_head.o := -DTEXT_OFFSET=$(TEXT_OFFSET)
 
-ifdef CONFIG_DYNAMIC_FTRACE
 CFLAGS_REMOVE_ftrace.o = -pg
-endif
+CFLAGS_REMOVE_ftrace_return.o = -pg
 
 # Object file lists.
 

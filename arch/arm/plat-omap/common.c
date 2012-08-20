@@ -185,7 +185,7 @@ console_initcall(omap_add_serial_console);
 
 #include <linux/clocksource.h>
 
-static cycle_t omap_32k_read(void)
+static cycle_t notrace omap_32k_read(void)
 {
 	return omap_readl(TIMER_32K_SYNCHRONIZED);
 }
@@ -203,7 +203,7 @@ static struct clocksource clocksource_32k = {
  * Returns current time from boot in nsecs. It's OK for this to wrap
  * around for now, as it's just a relative time stamp.
  */
-unsigned long long sched_clock(void)
+unsigned long long notrace sched_clock(void)
 {
 	unsigned long long ret;
 
