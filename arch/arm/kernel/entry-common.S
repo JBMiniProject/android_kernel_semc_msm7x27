@@ -115,8 +115,8 @@ ENTRY(mcount)
 	sub r0, r0, #MCOUNT_INSN_SIZE
 
 #ifdef CONFIG_FUNCTION_GRAPH_TRACER
-  @ FIXTHIS - DYNAMIC_FTRACE does not support function graph tracing
-  @ when the dynamic work is revived, this should be supported as well
+	@ FIXTHIS - DYNAMIC_FTRACE does not support function graph tracing
+	@ when the dynamic work is revived, this should be supported as well
 #endif
 
 	.globl mcount_call
@@ -150,7 +150,7 @@ ENTRY(__gnu_mcount_nc)
 	bx ip
 
 gnu_trace:
-	ldr r1, [sp, #20]      @ lr of instrumented routine
+	ldr r1, [sp, #20]			@ lr of instrumented routine
 	mov r0, lr
 	sub r0, r0, #MCOUNT_INSN_SIZE
 	mov lr, pc
@@ -169,12 +169,12 @@ ENTRY(mcount)
 #ifdef CONFIG_FUNCTION_GRAPH_TRACER
 	ldr r1, =ftrace_graph_return
 	ldr r2, [r1]
-	cmp r0, r2    @ if *ftrace_graph_return != ftrace_stub
+	cmp r0, r2		@ if *ftrace_graph_return != ftrace_stub
 	bne ftrace_graph_caller
 #endif /* CONFIG_FUNCTION_GRAPH_TRACER */
 
 	ldr lr, [fp, #-4]			@ restore lr
-	ldmia sp!, {r0-r3, pc}      @ return doing nothing
+	ldmia sp!, {r0-r3, pc}			@ return doing nothing
 
 trace:
 	ldr r1, [fp, #-4]			@ lr of instrumented routine
@@ -187,18 +187,18 @@ trace:
 
 #ifdef CONFIG_FUNCTION_GRAPH_TRACER
 ENTRY(ftrace_graph_caller)
-	sub r0, fp, #4      @ &lr of instrumented routine (&parent)
-	mov r1, lr      @ instrumented routine (func)
+	sub r0, fp, #4			@ &lr of instrumented routine (&parent)
+	mov r1, lr			@ instrumented routine (func)
 	sub r1, r1, #MCOUNT_INSN_SIZE
 	bl prepare_ftrace_return
-	ldr lr, [fp, #-4]    @ restore lr
+	ldr lr, [fp, #-4]		@ restore lr
 	ldmia sp!, {r0-r3, pc}
 
 	.globl return_to_handler
 return_to_handler:
 	stmdb sp!, {r0-r3}
 	bl ftrace_return_to_handler
-	mov lr, r0      @ r0 has real ret addr
+	mov lr, r0			@ r0 has real ret addr
 	ldmia sp!, {r0-r3}
 	mov pc, lr
 

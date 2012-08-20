@@ -53,7 +53,7 @@ extern int load_565rle_image(char *filename);
 #endif
 
 #ifdef CONFIG_FB_MSM_TRIPLE_BUFFER
-#define MSM_FB_NUM  3
+#define MSM_FB_NUM	3
 #endif
 
 static unsigned char *fbram;
@@ -2635,6 +2635,7 @@ void msm_fb_add_device(struct platform_device *pdev)
 	if (!pdata)
 		return;
 	type = pdata->panel_info.type;
+
 #if defined MSM_FB_NUM
 	/*
 	 * over written fb_num which defined
@@ -2647,7 +2648,7 @@ void msm_fb_add_device(struct platform_device *pdev)
 		pdata->panel_info.fb_num = MSM_FB_NUM;
 
 	MSM_FB_INFO("setting pdata->panel_info.fb_num to %d. type: %d\n",
-	pdata->panel_info.fb_num, type);
+			pdata->panel_info.fb_num, type);
 #endif
 	fb_num = pdata->panel_info.fb_num;
 
