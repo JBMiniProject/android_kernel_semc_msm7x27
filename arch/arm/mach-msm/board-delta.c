@@ -114,13 +114,20 @@
 #include  <linux/semc/semc_gpio_extr.h>
 #endif
 //#define MSM_PMEM_MDP_SIZE	0x8DE000 //9297920 bytes
-#define MSM_PMEM_MDP_SIZE	0xC3D000 //9297920 + 3534848 (camera) = 12832768 bytes
+//#define MSM_PMEM_MDP_SIZE	0xC3D000 //9297920 + 3534848 (camera) = 12832768 bytes
 //#define MSM_PMEM_MDP_SIZE 	0xC74000 //13058048 bytes
 //#define MSM_PMEM_MDP_SIZE 	0xF74000 //16203776 bytes
 //#define MSM_PMEM_MDP_SIZE		0x1313000 //20000768 bytes
 //#define MSM_PMEM_MDP_SIZE 	0x1B76000  //28794880 bytes, size = 23<<20; in gralloc.cpp
 //#define MSM_PMEM_MDP_SIZE 	0x1700000 //24117248 bytes size = 18<<20; in gralloc.cpp
-#define MSM_PMEM_ADSP_SIZE	0x8DE000   //9297920 bytes, old: 0xC00000 == 12582912 bytes
+//#define MSM_PMEM_ADSP_SIZE	0x8DE000   //9297920 bytes, old: 0xC00000 == 12582912 bytes
+#if  defined(CONFIG_MACH_MSM7X27_SHAKIRA)
+#define MSM_PMEM_MDP_SIZE      0xB00000 //4MB for camera + 7MB for gralloc
+#else
+#define MSM_PMEM_MDP_SIZE      0x800000 //4MB for camera + 4MB for gralloc
+#endif
+#define MSM_PMEM_ADSP_SIZE     0x1C4000
+
 #ifdef CONFIG_CAPTURE_KERNEL
 #include "smd_private.h"
 #endif
