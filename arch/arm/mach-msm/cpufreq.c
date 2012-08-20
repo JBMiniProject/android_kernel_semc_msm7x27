@@ -17,10 +17,14 @@
  *
  */
 
+#include <linux/cpu.h>
 #include <linux/earlysuspend.h>
 #include <linux/init.h>
 #include <linux/cpufreq.h>
+#include <linux/sysdev.h>
 #include "acpuclock.h"
+
+static int override_cpu;
 
 #define dprintk(msg...) \
 		cpufreq_debug_printk(CPUFREQ_DEBUG_DRIVER, "cpufreq-msm", msg)
@@ -71,7 +75,13 @@ static int msm_cpufreq_target(struct cpufreq_policy *policy,
 		relation, policy->min, policy->max, table[index].frequency);
 #endif
 	freqs.old = policy->cur;
-	freqs.new = table[index].frequency;
+	if (override_cpu) {
+		if (policy->cur == policy->max)
+			return 0;
+		else
+			freqs.new = policy->max;
+	} else
+		freqs.new = table[index].frequency;
 	freqs.cpu = smp_processor_id();
 	cpufreq_notify_transition(&freqs, CPUFREQ_PRECHANGE);
 	ret = acpuclk_set_rate(table[index].frequency, SETRATE_CPUFREQ);
@@ -114,6 +124,24 @@ static struct freq_attr *msm_cpufreq_attr[] = {
 	NULL,
 };
 
+static ssize_t store_mfreq(struct sysdev_class *class,
+                       const char *buf, size_t count)
+{
+	u64 val;
+
+	if (strict_strtoull(buf, 0, &val) < 0) {
+		printk(KERN_ERR "Failed param conversion\n");
+		return 0;
+	}
+	if (val)
+		override_cpu = 1;
+	else
+		override_cpu = 0;
+	return count;
+}
+
+static SYSDEV_CLASS_ATTR(mfreq, 0200, NULL, store_mfreq);
+
 static struct cpufreq_driver msm_cpufreq_driver = {
 	/* lps calculations are handled here. */
 	.flags		= CPUFREQ_STICKY | CPUFREQ_CONST_LOOPS,
@@ -126,6 +154,10 @@ static struct cpufreq_driver msm_cpufreq_driver = {
 
 static int __init msm_cpufreq_register(void)
 {
+	int err = sysfs_create_file(&cpu_sysdev_class.kset.kobj,
+                       &attr_mfreq.attr);
+	if (err)
+		printk(KERN_ERR "Failed to create sysfs mfreq\n");
 	return cpufreq_register_driver(&msm_cpufreq_driver);
 }
 
