@@ -137,12 +137,23 @@
  *
  * QVGA: (240+16)*320*2*2 + 128kb = 0x70000
  * HVGA: 320*480*2*2 + 128kb = 0xB6000
+ * Triple bufferring hack:
+ * QVGA: (240+16)*320*2*3 + 128kb = 0x98000
+ * HVGA: 320*480*2*3 + 128kb = 0x101000
  */
 #if	defined(CONFIG_MACH_MSM7X27_ROBYN) || \
 	defined(CONFIG_MACH_MSM7X27_MIMMI)
+#ifdef CONFIG_FB_MSM_TRIPLE_BUFFER
+#define MSM_FB_SIZE		0x98000
+#else
 #define MSM_FB_SIZE		0x70000
+#endif
 #elif	defined(CONFIG_MACH_MSM7X27_SHAKIRA)
+#ifdef CONFIG_FB_MSM_TRIPLE_BUFFER
+#define MSM_FB_SIZE    0x101000
+#else
 #define MSM_FB_SIZE		0xB6000
+#endif
 #else
 #warning "Warning, fb size not configured in board config. Assuming HVGA."
 #define MSM_FB_SIZE		0xB6000
