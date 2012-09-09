@@ -62,6 +62,20 @@
 # define SLAB_DEBUG_OBJECTS	0x00000000UL
 #endif
 
+#define SLAB_NOLEAKTRACE        0x00800000UL
+
+/* Don't track use of uninitialized memory */
+#ifdef CONFIG_KMEMCHECK
+# define SLAB_NOTRACK           0x01000000UL
+#else
+# define SLAB_NOTRACK           0x00000000UL
+#endif
+#ifdef CONFIG_FAILSLAB
+# define SLAB_FAILSLAB          0x02000000UL
+#else
+# define SLAB_FAILSLAB          0x00000000UL
+#endif
+
 /* The following flags affect the page allocator grouping pages by mobility */
 #define SLAB_RECLAIM_ACCOUNT	0x00020000UL		/* Objects are reclaimable */
 #define SLAB_TEMPORARY		SLAB_RECLAIM_ACCOUNT	/* Objects are short-lived */

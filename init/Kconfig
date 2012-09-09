@@ -922,10 +922,10 @@ config COMPAT_BRK
 	  On non-ancient distros (post-2000 ones) N is usually a safe choice.
 
 choice
-	prompt "Choose SLQB allocator"
+	prompt "Choose SLAB allocator"
 	default SLQB
 	help
-	   This option allows to select a slqb allocator.
+	   This option allows to select a slab allocator.
 
 config SLAB
 	bool "SLAB"
