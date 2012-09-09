@@ -303,7 +303,7 @@ config SLQB_DEBUG
 	bool "Enable SLQB debugging support"
 	depends on SLQB
 
-onfig SLQB_DEBUG_ON
+config SLQB_DEBUG_ON
 	default n
 	bool "SLQB debugging on by default"
 	depends on SLQB_DEBUG
