@@ -33,6 +33,9 @@ CFLAGS_REMOVE_cred.o = -Werror
 CFLAGS_REMOVE_kexec.o = -Werror
 endif
 
+# Ignore warnings to prevent build breaks when using gcc 4.5.0
+CFLAGS_REMOVE_async.o = -Werror
+
 obj-$(CONFIG_FREEZER) += freezer.o
 obj-$(CONFIG_PROFILING) += profile.o
 obj-$(CONFIG_SYSCTL_SYSCALL_CHECK) += sysctl_check.o
