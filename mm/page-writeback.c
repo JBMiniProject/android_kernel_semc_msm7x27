@@ -66,7 +66,7 @@ static inline long sync_writeback_pages(void)
 /*
  * Start background writeback (via pdflush) at this percentage
  */
-int dirty_background_ratio = 70;
+int dirty_background_ratio = 80;
 
 /*
  * dirty_background_bytes starts at 0 (disabled) so that it is a function of
