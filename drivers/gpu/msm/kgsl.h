@@ -148,7 +148,7 @@ struct kgsl_mem_entry *kgsl_sharedmem_find_region(
 	struct kgsl_process_private *private, unsigned int gpuaddr,
 	size_t size);
 
-extern const struct dev_pm_ops kgsl_pm_ops;
+extern struct dev_pm_ops kgsl_pm_ops;
 
 struct early_suspend;
 int kgsl_suspend_driver(struct platform_device *pdev, pm_message_t state);

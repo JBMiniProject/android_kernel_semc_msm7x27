@@ -3124,7 +3124,7 @@ static int pmem_runtime_resume(struct device *dev)
 	return 0;
 }
 
-static const struct dev_pm_ops pmem_dev_pm_ops = {
+static struct dev_pm_ops pmem_dev_pm_ops = {
 	.runtime_suspend = pmem_runtime_suspend,
 	.runtime_resume = pmem_runtime_resume,
 };

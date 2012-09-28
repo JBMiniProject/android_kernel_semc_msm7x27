@@ -466,7 +466,7 @@ static int kgsl_runtime_resume(struct device *dev)
 	return 0;
 }
 
-const struct dev_pm_ops kgsl_pm_ops = {
+struct dev_pm_ops kgsl_pm_ops = {
 	.suspend = kgsl_suspend,
 	.resume = kgsl_resume,
 	.runtime_suspend = kgsl_runtime_suspend,
