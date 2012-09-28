@@ -211,6 +211,13 @@ extern int rcu_scheduler_active;
 		(p) = (v); \
 	})
 
+#define rcu_assign_pointer_nonull(p, v) \
+	({ \
+		if (!__builtin_constant_p(v)) \
+			smp_wmb(); \
+		(p) = (v); \
+	})
+
 /* Infrastructure to implement the synchronize_() primitives. */
 
 struct rcu_synchronize {
