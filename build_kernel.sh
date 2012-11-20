@@ -18,6 +18,10 @@ make -j`grep 'processor' /proc/cpuinfo | wc -l`
 pushd arch/arm/boot/
 cp zImage $FROM/compiled/image
 popd
+pushd drivers/input/touchscreen/
+cp synaptics_i2c_rmi4_dt.ko $FROM/compiled/synaptics_i2c_rmi4_dt.ko
+cp synaptics_i2c_rmi4_no_dt.ko $FROM/compiled/synaptics_i2c_rmi4_no_dt.ko
+popd
 ENDK=$(date +%s)
 
 # Build the wifi modules
