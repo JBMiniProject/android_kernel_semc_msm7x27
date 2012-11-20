@@ -182,7 +182,7 @@ static struct sk_buff *bcsp_prepare_pkt(struct bcsp_struct *bcsp, u8 *data,
 	struct sk_buff *nskb;
 	u8 hdr[4], chan;
 	u16 BCSP_CRC_INIT(bcsp_txmsg_crc);
-	int rel, i;
+	int rel, i, ret;
 
 	switch (pkt_type) {
 	case HCI_ACLDATA_PKT:
@@ -243,8 +243,8 @@ static struct sk_buff *bcsp_prepare_pkt(struct bcsp_struct *bcsp, u8 *data,
 
 	if (rel) {
 		hdr[0] |= 0x80 + bcsp->msgq_txseq;
-		BT_DBG("Sending packet with seqno %u", bcsp->msgq_txseq);
-		bcsp->msgq_txseq = ++(bcsp->msgq_txseq) & 0x07;
+		BT_DBG("Sending packet with seqno %u", bcsp->msgq_txseq | ret);
+		ret = ++(bcsp->msgq_txseq) & 0x07;
 	}
 
 	if (bcsp->use_crc)
