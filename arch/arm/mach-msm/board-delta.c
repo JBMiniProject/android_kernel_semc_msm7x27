@@ -118,7 +118,7 @@
 #else
 #define MSM_PMEM_MDP_SIZE      0x800000 //4MB for camera + 4MB for gralloc
 #endif
-#define MSM_PMEM_ADSP_SIZE     0x1C4000
+#define MSM_PMEM_ADSP_SIZE     0x400000 //4MB for video encoder
 #ifdef CONFIG_CAPTURE_KERNEL
 #include "smd_private.h"
 #endif
