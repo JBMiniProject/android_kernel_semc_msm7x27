@@ -9,7 +9,7 @@
  */
 
 #include <linux/module.h>
-#include <linux/kernel.h>	
+#include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/proc_fs.h>
 #include <asm/uaccess.h>
@@ -31,9 +31,7 @@
 #define DXDBG(x)					
 
 #define DEVICE_NAME				"X8"
-//#define OFS_KALLSYMS_LOOKUP_NAME	0xC00AF6D8			// kallsyms_lookup_name for stock
-//#define OFS_KALLSYMS_LOOKUP_NAME	0xc00ac718			// kallsyms_lookup_name for nAa-06 x10mini
-#define OFS_KALLSYMS_LOOKUP_NAME	0xc00ac7c4			// kallsyms_lookup_name for nAa-07 x8
+#define OFS_KALLSYMS_LOOKUP_NAME	0xc00ac7c4
 
 // struct definition
 struct clkctl_acpu_speed_dx {
