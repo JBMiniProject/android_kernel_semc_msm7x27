@@ -12,7 +12,7 @@
 #include <linux/kernel.h>	
 
 // defines
-#define MODULE_NAME 			"x8oc"
+#define MODULE_NAME 			"x8uv"
 #define MODULE_VER			"v001"
 #define DXDBG(x)					
 
@@ -82,5 +82,5 @@ static void __exit x10miniuv_exit(void)
 module_init(x10miniuv_init);
 module_exit(x10miniuv_exit);
 
-MODULE_DESCRIPTION("Undervoltage module for Sony Ericsson X10mini / X8");
+MODULE_DESCRIPTION("Undervoltage module for Sony Ericsson X8");
 MODULE_LICENSE("GPL");
