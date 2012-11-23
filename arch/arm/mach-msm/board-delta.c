@@ -114,11 +114,11 @@
 #include  <linux/semc/semc_gpio_extr.h>
 #endif
 #if	defined(CONFIG_MACH_MSM7X27_SHAKIRA)
-#define MSM_PMEM_MDP_SIZE      0xB00000 //4MB for camera + 7MB for gralloc
+#define MSM_PMEM_MDP_SIZE      0xC3D000 //4MB for camera + 9MB for gralloc
 #else
-#define MSM_PMEM_MDP_SIZE      0x800000 //4MB for camera + 4MB for gralloc
+#define MSM_PMEM_MDP_SIZE      0xB00000 //4MB for camera + 7MB for gralloc
 #endif
-#define MSM_PMEM_ADSP_SIZE     0x400000 //4MB for video encoder
+#define MSM_PMEM_ADSP_SIZE     0x6DE000
 #ifdef CONFIG_CAPTURE_KERNEL
 #include "smd_private.h"
 #endif
