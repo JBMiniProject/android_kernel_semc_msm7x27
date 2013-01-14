@@ -1,7 +1,7 @@
 #
 # Automatically generated make config: don't edit
 # Linux kernel version: 2.6.29.6
-# Wed Jan 02 21:13:26 2013
+# Mon Jan 14 12:11:39 2013
 #
 CONFIG_ARM=y
 CONFIG_SYS_SUPPORTS_APM_EMULATION=y
@@ -354,7 +354,7 @@ CONFIG_ALIGNMENT_TRAP=y
 #
 CONFIG_ZBOOT_ROM_TEXT=0x0
 CONFIG_ZBOOT_ROM_BSS=0x0
-CONFIG_CMDLINE="mem=215M androidboot.hardware=delta g_android.product_id=0x3137 console=ttyMSM2 mtdparts=msm_nand:0x10400000@0x2c00000(system),0x7C0000@0x13000000(cache),0xC800000@0x137C0000(userdata)"
+CONFIG_CMDLINE="mem=215M androidboot.hardware=delta g_android.product_id=0x3137 console=ttyMSM2 mtdparts=msm_nand:0x10500000@0x2c00000(system),0x500000@0x13100000(cache),0xbfc0000@0x13600000(userdata),0xA00000@0x1f5C0000(recovery)"
 # CONFIG_XIP_KERNEL is not set
 # CONFIG_KEXEC is not set
 # CONFIG_CRASH_DUMP is not set
