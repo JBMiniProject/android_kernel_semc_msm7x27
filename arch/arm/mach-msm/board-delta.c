@@ -1999,9 +1999,9 @@ static void __init msm_mddi_hitachi_hvga_display_device_init(void)
 	panel_data->panel_info.pdest = DISPLAY_1;
 	panel_data->panel_info.wait_cycle = 0;
 	panel_data->panel_info.bpp = 16;
-	panel_data->panel_info.clk_rate = 153600000;
-	panel_data->panel_info.clk_min =  150000000;
-	panel_data->panel_info.clk_max = 160000000;
+	panel_data->panel_info.clk_rate = 10000000;
+	panel_data->panel_info.clk_min =  9000000;
+	panel_data->panel_info.clk_max = 11000000;
 	panel_data->panel_info.fb_num = 2;
 
 	panel_data->panel_info.mddi.vdopkt = 0x0023;
