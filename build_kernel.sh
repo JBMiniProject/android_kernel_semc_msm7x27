@@ -4,7 +4,7 @@
 STARTK=$(date +%s)
 export ARCH=arm
 export HOST_PLATFORM=msm
-export CROSS_COMPILE=/home/daveee10/android/JBMiniProject/prebuilt/linux-x86/toolchain/linaro-4.7.1/bin/arm-eabi-
+export CROSS_COMPILE=/home/daveee10/android/JBMiniProject/prebuilt/linux-x86/toolchain/linaro-4.7.3/bin/arm-eabi-
 export KERNEL_DIR=`pwd`
 FROM=`pwd`
 
